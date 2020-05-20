@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스파르타코딩클럽 | 로그인페이지</title>
+    <link rel="stylesheet" type="text/css" href="my.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    <script>
+        function buy() {
+            alert("구독이 완료되었습니다. 감사합니다.")
+        }
+    </script>
+    <style>
+        input {
+            border: 1px solid #0054ff;
+            border-radius: 0px;
+            height: 30px;
+            width: 300px;
+        }
+
+        button {
+            background-color: skyblue;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 400px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="mytitle">
+        </div>
+        <h1>Notion</h1>
+        <span style="font-size: 20pt;">구독료: 4$/1개월 </span>
+        <a href="https://finance.naver.com/marketindex/exchangeDetail.nhn?marketindexCd=FX_USDKRW"
+            class="card-title">환율값 알아보기</a>
+
+        <div class="explain_box">
+            <p>메모, 문서, 지식 정리, 작업, 프로젝트 그리고 데이터베이스를 하나의 서비스로 통합한 종합 메모 서비스이다.
+                사용 예시는 공식 사이트에서 GIF 이미지로 확인 가능하다. 기능을 직접 체험할 수 있는 데모 또한 포함되어 있다.
+            </p>
+        </div>
+        <div>
+            <div >
+                <p style="text-align: justify;">
+                    구독자 ID&nbsp;: <input type="text" />
+                </p>
+            </div>
+            <p style="text-align: justify;">
+                개월 수&nbsp;&nbsp;&nbsp;: <select name="month">
+                    <option value="1개월">1개월</option>
+                    <option value="3개월">3개월 2$ 할인</option>
+                    <option value="6개월">6개월 5$ 할인</option>
+                </select>
+            </p>
+            <p style="text-align: justify;">
+                이메일 주소: <input type="email">
+            </p>
+            <p style="text-align: justify;">
+                전화번호&nbsp;&nbsp;: <input type="number">
+            </p>
+
+        </div>
+        <button onclick="buy()">구독하기</button>
+    </div>
+
+
+
+
+</body>
+</body>
+
+</html>

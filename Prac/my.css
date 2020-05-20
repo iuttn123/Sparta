@@ -1,0 +1,36 @@
+
+* {
+    font-family: 'Single Day', cursive;
+  }
+        .mytitle {
+            color: white;
+            width: 400px;
+            height: 500px;
+            background-image: url('https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FcQqiuQ%2FbtqtYmIILPh%2FcjM2L7LTffuvUuJp2qzBj0%2Fimg.jpg');
+            background-position: center;
+            background-size: cover;
+
+            border-radius: 10px;
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .wrap {
+            width: 400px;
+            margin: auto;
+        }
+        .explain_box {
+            color: gray;
+            border-color: skyblue;
+        }
+        
+        .input_box{
+            color: whitesmoke;
+            border-color:  skyblue;
+        }
+        .bd-box{
+            width:400px;
+            border:1px solid transparent;
+            border-color: skyblue;
+        }
+            
