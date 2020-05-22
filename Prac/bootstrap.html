@@ -47,7 +47,7 @@
             width: 500px;
             margin: 20px auto;
             padding: 50px;
-            border: black solid;
+            border: brown solid;
             border-radius: 5px;
         }
     </style>
@@ -61,6 +61,7 @@
             if($("#post-box").css("display")=="none"){
                 $("#post-box").show();
                 $("#btn-post-box").text("포스팅 박스 닫기"); 
+                
             }
         
             // post-box가 보일 때
@@ -99,8 +100,8 @@
                 </button>
             </div>
         </div>
-        <div class="card-columns">
-            <div id="cards-box">
+        <div class="card-columns" id="card-boxs">
+            <!-- <div id="cards-box">
                 <div class="card">
                     <img class="card-img-top"
                         src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fpostfiles.pstatic.net%2FMjAyMDA1MTJfMjIw%2FMDAxNTg5MjQ4OTExNTg2.4ufieqre5Ryu_kVRQTt-RzSUOo031DGn3BrOAAEVu7wg.IvVNG-6KLAZ_Bj-0y7-DOM0RAHOUvQpZEVL2cZszjfEg.GIF.naver_diary%2FSPL_nM_%EC%86%8C%EB%B0%A9%EB%8C%80.gif%3Ftype%3Dw773"
@@ -112,7 +113,7 @@
                         <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="card">
                 <img class="card-img-top"
                     src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
@@ -164,6 +165,20 @@
                 </div>
             </div>
         </div>
+        <script>
+              let temp = ` <div class="card">
+                <img class="card-img-top"
+                    src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <a href="#" class="card-title">여기 기사 제목이 들어가죠</a>
+                    <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
+                    <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+                </div>
+                </div>`
+                console.log(temp);
+                $("#card-boxs").append(temp);
+        </script>
     </div>
 </body>
 
