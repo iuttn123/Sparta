@@ -18,3 +18,4 @@ for tr in musics_trs:
     artist= tr.select_one('td.info > a.artist.ellipsis').text
     print(rank,title.strip(),artist.strip())
     rank = rank+1
+
