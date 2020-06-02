@@ -1,0 +1,24 @@
+#Search{
+   
+    display: block;
+    position: absolute;
+
+    left: 40%; top:20%;
+    margin-left: -60px;
+    margin-top: -10px;
+    text-align: center;
+}
+
+#Search_Box{
+  border-style:solid;
+  border-color: rgba(62, 114, 62, 0.637);
+  width:410px;
+  font-size:20px;
+}
+
+#Hunting_Box{
+  font-size: 20px;
+  border-radius: 10%;
+  transition-duration: 0.5s;
+  background: rgb(189, 211, 189);
+}

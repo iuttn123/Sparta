@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        function get() {
+            $.ajax({
+                type: "GET",
+                url: "/test?title_give=봄날은간다",
+                data: {},
+                success: function (response) {
+                    console.log(response)
+                }
+            })
+        }
+        function post() {
+            $.ajax({
+                type: "GET",
+                url: "/test?title_give=봄날은간다",
+                data: {},
+                success: function (response) {
+                    console.log(response)
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <h1>서버를 만들었다!</h1>
+    <!-- <img src="{{ url_for('static', filename='lol.jpg') }}"/> -->
+    <img
+        src="https://cdnb.artstation.com/p/assets/images/images/015/609/791/large/artur-sadlos-leg-more-sh070-background-as-v001.jpg?1548954983" /></img>
+    <button onclick="get()">get 하기</button>
+    <button onclick="post()">post 하기</button>
+
+</body>
+
+</html>

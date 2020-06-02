@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL-Hunters</title>
+
+    <!-- css file -->
+
+    <link rel="stylesheet" type="text/css" href="Body.CSS">
+    <link rel="stylesheet" type="text/css" href="Upper_Head.CSS">
+    <link rel="stylesheet" type="text/css" href="Search_ID.CSS">
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <!-- jqeury -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+</head>
+
+<body id="Body">
+
+    <div id="Upper_Head">
+        <a id="Title" herf=""><span>LoL-Hunters</span></a></br>
+        <a href="#" class="Option"> 유저 찾기 </a>
+        <a href="#" class="Option"> 신고하기 </a>
+        <a href="#" class="Option"> 티어별 악질 랭크 </a>
+        <a href="#" class="Option"> 유저 찾기 </a>
+    </div>
+
+
+    <form id="Search">
+        <img src="https://cdna.artstation.com/p/assets/images/images/008/853/294/large/john-buenaventura-ziggs-waffles.jpg?1515699330"
+            width="500px"></img><br>
+        <input type="search" id="Search_Box">
+        <script>
+            function input() {
+                var text = document.getElementById("Search_Box").value;
+                window.open('https://www.op.gg/summoner/userName=' + text, '_blank');
+               
+            }
+        </script>
+        </input>
+        <button id="Hunting_Box" onclick="input()">Hunting</button>
+    </form>
+
+</body>
+
+</html>

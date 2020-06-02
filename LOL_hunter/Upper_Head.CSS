@@ -1,0 +1,29 @@
+#Upper_Head{
+    
+    display: grid;
+    background-image: linear-gradient(90deg,#368AFF,#A2FFFF);
+    
+    grid-template-rows: 70px, 50px;
+    grid-template-columns: repeat(5,1fr);
+
+    margin-top: 0px;
+    width: auto;
+    height: 110px;
+    
+}
+
+#Upper_Head > #Title{
+    font-size: 40px; margin-left: 10px; color: rgb(158, 208, 251);
+    font-family: 'Chelsea Market', cursive; 
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+#Upper_Head > .Option{
+
+    font-size: 25px; margin-left: 10px; color: rgb(26, 41, 54);
+    font-family: 'Do Hyeon', sans-serif;
+    text-align: center;
+    padding: 20px 0;
+}
+
