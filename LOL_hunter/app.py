@@ -52,8 +52,7 @@ def User_data():
     soup = BeautifulSoup(data.text,'html.parser')
     image = soup.select('.ProfileImage')
     print(image[0]['src'])
-    print("------------------------------------------")
-    # return jsonify({'result': image}) 
+    return jsonify({'User_Icon': image[0]['src']}) 
 
 
 if __name__ == '__main__':  

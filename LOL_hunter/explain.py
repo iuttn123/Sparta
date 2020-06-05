@@ -15,3 +15,11 @@
 
 # soup = BeautifulSoup(data.text,'html.parser')
 # print(soup)
+
+
+# >>> from bs4 import BeautifulSoup
+# >>> soup = BeautifulSoup('<META NAME="City" content="Austin">')
+# >>> soup.find("meta", {"name":"City"})
+# <meta name="City" content="Austin" />
+# >>> soup.find("meta", {"name":"City"})['content']
+# u'Austin'
