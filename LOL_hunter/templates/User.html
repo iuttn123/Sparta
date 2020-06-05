@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL-Hunters</title>
+
+    <!-- css file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Body.CSS') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Upper_Head.CSS') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Search_ID.CSS') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User_Information.CSS') }}">
+
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <!-- jqeury -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        (op_gg_crawling = function () {
+            url_split = window.location.href.split("http://localhost:5000/User/")
+            // alert(url_split)
+            $.ajax({
+                    type: "GET",
+                    url: "/OP.GG_Crawling?User=" + url_split,
+                    data: {},
+                    success: function (response) {
+                      //alert(response['result'])
+                    }
+                })
+        })()
+    </script>
+
+
+</head>
+
+<body id="Body">
+
+    <div id="Upper_Head">
+        <a id="Title" herf=""><span>LoL-Hunters</span></a></br>
+        <a href="#" class="Option"> 유저 찾기 </a>
+        <a href="#" class="Option"> 신고하기 </a>
+        <a href="#" class="Option"> 티어별 악질 랭크 </a>
+        <a href="#" class="Option"> 유저 찾기 </a>
+    </div>
+
+    <div id="User_Container">
+        <div id="User_Icon">1</div>
+        <div id="User_Information"></div>
+    </div>
+</body>
+
+</html>

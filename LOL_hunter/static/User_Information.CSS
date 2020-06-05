@@ -1,0 +1,12 @@
+#User_Container{
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: double rgb(194, 183, 178);
+}
+
+#User_Container > #User_Icon {
+    background-color: #f1f1f1;
+    margin: 100px;
+    padding: 20px;
+    font-size: 30px
+}

@@ -47,20 +47,16 @@
                 var search = document.getElementById("Search_Box").value;
                 $.ajax({
                     type: "GET",
-                    url: "/test?ID_Search=" + search,
+                    url: "/Search?ID_Search=" + search,
                     data: {},
                     success: function (response) {
-                        if(response['result']==false) alert("잘못 입력하였거나 없는 소환사 입니다. 다시 한 번 확인해 주세요.")
-                        else{
-                            
+                        if (response['result'] == false) alert("잘못 입력하였거나 없는 소환사 입니다. 다시 한 번 확인해 주세요.")
+                        else {
+                            window.open("User/"+response['summoner']);
                         }
                     }
                 })
 
-                // var text = document.getElementById("Search_Box").value;
-                // window.open('https://www.op.gg/summoner/userName=' + text, '_blank');
-                // var element = document.getElementsByClassName('https://www.op.gg/summoner/userName=%ED%95%AB%20%EB%B6%80');
-                // console.log(element);
             }
         </script>
         </input>
