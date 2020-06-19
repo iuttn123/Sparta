@@ -1,0 +1,515 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Untitled</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cute+Font&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- jqeury -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="Navigation-Clean.css" />
+    <link rel="stylesheet" href="User_header.css" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Navigation-Clean.css') }}">
+    <link rel="stylesheet" href="{{url_for('static',filename='User_header.css')}}">
+
+    <script>
+        var user_ids = decodeURIComponent(window.location.href.split("http://localhost:5000/User/")[1]);
+        var atmp123;
+        var unre;
+        var oth;
+
+
+        window.onload = function () {
+            url_split = window.location.href.split("http://localhost:5000/User/")
+            $.ajax({
+                type: "GET",
+                url: "/OP.GG_Crawling?User=" + url_split,
+                data: {},
+                success: function (response) {
+                    img = response['User_Icon']
+                    document.getElementById("user_icon").style.background = "url(" + img + ")";
+                    document.getElementById("user_icon").style.backgroundSize = "cover";
+                    document.getElementById("user_id").innerHTML = decodeURIComponent(url_split[1]);
+                }
+            })
+
+            $.ajax({
+                type: "GET",
+                url: "/data_inquery?User=" + url_split[1],
+                data: {},
+                success: function (response) {
+                }
+            })
+        }
+        function checking() {
+            var cnt = 0;
+
+            for (i = 0; i < document.getElementsByName("troll_check").length; i++) {
+                if (document.getElementsByName("troll_check")[i].checked) {
+                    cnt++;
+                }
+            }
+            if (cnt > 0) document.getElementById("reporting_catagory").style.display = "block";
+            else document.getElementById("reporting_catagory").style.display = "none";
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <!--네비게이션 파트 -->
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container">
+            <a class="navbar-brand" href="#">LOL-Hunters</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <input type="search" style="margin-left: 1rem; width: 250px;" placeholder="아이디를 입력하세요." id="Search_Box"
+                    onkeyup="input();">
+                <input id="Hunter_btn" type="button" value="Hunt">
+
+                <script>
+                    function input() {
+                        if (window.event.keyCode == 13) {
+                            var search = document.getElementById("Search_Box").value;
+                            $.ajax({
+                                type: "GET",
+                                url: "/Search?ID_Search=" + search,
+                                data: {},
+                                success: function (response) {
+                                    if (response['result'] == false) alert("잘못 입력하였거나 없는 소환사 입니다. 다시 한 번 확인해 주세요.");
+                                    else {
+                                        window.open(response['summoner']);
+                                    }
+                                }
+                            })
+                        }
+                    }
+                </script>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2" style="padding-top: 5;">
+        <div class="user_header">
+            <div id="user_icon"></div>
+            <h1 class="user_info" id="user_id"></h1>
+            <br><br>
+            <h3 class="user_info"> 리폿 당한 횟수:</h3>
+            <br><br>
+            <input id="report_btn" type="button" value="리폿취소" onclick="opencloseForm()">
+            <script>
+                function opencloseForm() {
+                    let state = document.getElementById("report_catagory").style.display
+                    if (state == 'none') {
+                        document.getElementById("report_catagory").style.display = "grid";
+                        document.getElementById("report_btn").value = "리폿취소";
+                    }
+                    else {
+                        document.getElementById("report_catagory").style.display = "none";
+                        document.getElementById("report_btn").value = "리폿하기";
+                    }
+                }
+            </script>
+            <input id="opgg_btn" type="button" value="OP.GG" onclick="opgg()">
+            <script>
+                function opgg() {
+                    url_split = window.location.href.split("http://localhost:5000/User/")
+                    window.open("https://www.op.gg/summoner/userName=" + url_split);
+                }
+            </script>
+        </div>
+
+        <div id="report_catagory">
+            <div style="border-left: .25rem solid #4e73df!important;">
+                <p>리폿 사유</p>
+                <div>
+                    <label class="report_container" id="trolling_label">고의성 트롤링
+                        <input type="checkbox" onclick="openclose_trolling()" id="trolling">
+                    </label>
+                    <label class="report_container" id="unreasonable_play_label">비합리적 트롤링
+                        <input type="checkbox" onclick="openclose_unreasonable_trolling()" id="unreasonable_play">
+                    </label>
+                    <label class="report_container" id="the_other_label">그 외(욕설 및 정치 등)
+                        <input type="checkbox" onclick="openclose_the_other()" id="the_ohter">
+                    </label>
+                </div>
+                <script>
+                    function openclose_trolling() {
+                        let a = document.getElementById("trolling").checked;
+                        if (a == true) {
+                            document.getElementById("trolling_label").style.backgroundColor = "#ffc8be";
+                            document.getElementById("trolling_catagroy").style.display = "block";
+                        }
+                        else {
+                            // document.getElementById("trolling_label").style.display = "none";
+                            document.getElementById("trolling_label").style.backgroundColor = "#ffffff";
+                            document.getElementById("trolling_catagroy").style.display = "none";
+                        }
+                    }
+                    function openclose_unreasonable_trolling() {
+                        let a = document.getElementById("unreasonable_play").checked;
+                        if (a == true) {
+                            document.getElementById("unreasonable_play_label").style.backgroundColor = "#beffeb";
+                            document.getElementById("unreasonable_play_catagory").style.display = "block";
+                        }
+                        else {
+                            document.getElementById("unreasonable_play_label").style.backgroundColor = "#ffffff";
+                            document.getElementById("unreasonable_play_catagory").style.display = "none";
+                        }
+                    }
+                    function openclose_the_other() {
+                        let a = document.getElementById("the_ohter").checked;
+                        if (a == true) {
+                            document.getElementById("the_other_label").style.backgroundColor = "#e1cbff";
+                            document.getElementById("the_ohter_catagory").style.display = "block";
+                        }
+                        else {
+                            document.getElementById("the_other_label").style.backgroundColor = "#ffffff";
+                            document.getElementById("the_ohter_catagory").style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+
+            <div id="trolling_catagroy" style="display: none;">
+                <p style="background-color: #ffc8be;">고의성 트롤링</p>
+                <div name="troll_box">
+                    <label class="trolling_container">다른 포지션 요구<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">라인 방해<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">비정상 플레이<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">버프 안줌or스틸<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">탈주<input type="checkbox" onclick="checking()" name="troll_check">
+                    </label>
+                    <label class="trolling_container">피딩형(=던짐)<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">일부러 킬먹음<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">일부러 CS먹음<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                </div>
+            </div>
+
+            <div id="unreasonable_play_catagory" style="display: none;">
+                <p style="background-color: #beffeb; font-size: 22px;">비합리적 트롤링</p>
+                <div>
+                    <label class="trolling_container">티어에 맞지않는 실력<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">솔킬 여러번 허용<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">합류 안하는 플레이<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">RPG 플레이<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">카정후 퍼블내줌<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">맵리를 못함<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">비합리적 오더<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                </div>
+            </div>
+
+            <div id="the_ohter_catagory" style="display: none;">
+                <p style="background-color: #e1cbff; font-size: 20px;">그 외(욕설 및 정치 등)</p>
+                <div>
+                    <label class="trolling_container">욕을 한다.<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">정치를 잘한다.<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">불평만 한다.<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">핑만 많이 찍는다.<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">본캐드립을 한다.<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">합리화를 한다.<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">대리 의혹<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">충챔 바라기<input type="checkbox" onclick="checking()"
+                            name="troll_check">
+                    </label>
+                    <label class="trolling_container">즐겜러<input type="checkbox" onclick="checking()" name="troll_check">
+                    </label>
+                </div>
+            </div>
+
+            <div id="reporting_catagory" style="display: none;">
+                <p style="background-color: #fffece; font-size: 25px; height: 40px; margin-bottom: 0rem">리폿 하기</p>
+                <div style="margin-top: 0px; width: 151.45px;">
+                    <textarea rows="7" cols="20" placeholder="한줄 평을 해주세요!" style="width: 235px; padding-left: 5px;"
+                        id="oneline_textarea"></textarea>
+                    <input type="button" value="리폿완료!" onclick="report()"
+                        style="border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; width: 235px;">
+                    <script>
+                        function report() {
+
+                            var checklist = new Array();
+
+                            for (i = 0; i < document.getElementsByName("troll_check").length; i++) {
+                                if (document.getElementsByName("troll_check")[i].checked) {
+                                    checklist.push(i);
+                                }
+                            }
+
+                            var oneline = document.getElementById("oneline_textarea").value.toString();
+                            // alert(checklist)
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/Report_database",
+                                data: { id: user_ids.toString(), check: checklist, oneline_send: oneline },
+                                // data: { id:user_ids.toString(), attempt_troll:troll, unreason_troll:unreason, the_ohter_troll:the_ohter, oneline_troll:oneline},
+                                success: function (response) {
+
+
+                                }
+                            })
+                        }
+                    </script>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <span style="position: absolute;margin-left:155px; margin-top: 165px; font-size: 25px;">123132</span>
+            <canvas id="doughnut" width="400" height="400" style="display: inline;"></canvas>
+            <canvas id="bar" width="400" height="400" style="display: inline;"></canvas>
+
+            <div style="display:inline; position: absolute; width: 420px; height: 300px; margin-left: 25px; margin-top: 15px; overflow:auto">
+                <p style="font-size: 20px; font-family: 'Noto Sans KR', sans-serif; text-align: center; ">한줄평 게시판</p>
+                <table style="width: 100%;">
+                    <tr style="border-bottom: double; background-color: rgba(102, 102, 102, 0.13);">
+                        <th style="width: 80%;">한줄평 내용</th>
+                    </tr>
+
+                    <tbody id="my-tbody">
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+        <div id="chartdiv"></div>
+
+    </div>
+    <script>
+        url_split = window.location.href.split("http://localhost:5000/User/")
+        $.ajax({
+            type: "GET",
+            url: "/Doughnut_data?User=" + url_split[1],
+            data: {},
+            async: false,
+            success: function (response) {
+                atmp = response['atmp']
+                unre = response['unre']
+                oth = response['oth']
+                bar_list = response['bar_list']
+                num_list = response['bar_list_data']
+                one_list = response['oneline_list']
+            }
+        })
+
+        var doughnut_data = {
+            labels: ["고의성 트롤", "비합리적 트롤", "그 외"],
+            datasets: [
+                {
+                    label: "trolling",
+                    data: [atmp, unre, oth],
+                    backgroundColor: [
+                        "#ffc8be",
+                        "#beffeb",
+                        "#e1cbff",
+                    ],
+                    borderColor: [
+                        "#ffc8be",
+                        "#beffeb",
+                        "#e1cbff",
+                    ],
+                    borderWidth: [1, 1, 1],
+                }
+            ]
+        };
+
+        var bar_data = {
+            labels: [bar_list[0], bar_list[1], bar_list[2], bar_list[3], bar_list[4], bar_list[5], bar_list[6]],
+            datasets: [
+                {
+                    fill: false,
+                    barPercentage: 0.5,
+                    barThickness: 6,
+                    maxBarThickness: 20,
+                    minBarLength: 2,
+                    data: [num_list[0], num_list[1], num_list[2], num_list[3], num_list[4], num_list[5], num_list[6]],
+                    backgroundColor: [
+                        "rgba(255, 99, 132, 0.2)",
+                        "rgba(255, 159, 64, 0.2)",
+                        "rgba(255, 205, 86, 0.2)",
+                        "rgba(75, 192, 192, 0.2)",
+                        "rgba(54, 162, 235, 0.2)",
+                        "rgba(153, 102, 255, 0.2)",
+                        "rgba(201, 203, 207, 0.2)"
+                    ]
+                }
+            ]
+        };
+
+
+        var doughnut_option = {
+            responsive: false,
+            title: {
+                display: true,
+                position: "top",
+                text: decodeURIComponent(url_split[1]) + "의 트롤링 성향",
+                fontSize: 20,
+                fontColor: "#111"
+            },
+            legend: {
+                display: true,
+                position: "bottom",
+                labels: {
+                    fontColor: "#333",
+                    fontSize: 16
+                }
+            }
+        };
+
+        var bar_option = {
+            responsive: false,
+            title: {
+                display: true,
+                position: "top",
+                text: "리폿 사유 TOP 7",
+                fontSize: 20,
+                fontColor: "#111"
+            },
+            scales: {
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        suggestedMax: num_list[0] * (1.5),    // minimum will be 0, unless there is a lower value.
+                        beginAtZero: true   // minimum value will be 0.
+                    }
+                }]
+            }
+        };
+
+        var ctx = document.getElementById('doughnut');
+        var myDoughnutChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: doughnut_data,
+            options: doughnut_option,
+        });
+
+
+        var ctx1 = document.getElementById('bar');
+        var myBarChart = new Chart(ctx1, {
+            type: 'bar',
+            data: bar_data,
+            options: bar_option
+        })
+
+
+        // am4core.ready(function () {
+
+        //     // Themes begin
+        //     am4core.useTheme(am4themes_animated);
+        //     // Themes end
+
+
+        //     var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+        //     var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+
+        //     series.accuracy = 4;
+        //     series.step = 15;
+        //     series.rotationThreshold = 0.7;
+        //     series.maxCount = 200;
+        //     series.minWordLength = 2;
+        //     series.labels.template.tooltipText = "{word}: {value}";
+        //     series.fontFamily = "Courier New";
+        //     series.maxFontSize = am4core.percent(30);
+        //     series.text="개같다. 근데 너무 개 같은데 참긴함 ㅋㅋ"
+        //     //series.text = "종근당이 한국파스퇴르연구소, 한국원자력의학원과 손잡고 혈액항응고제 및 급성췌장염 치료제 '나파벨탄(성분명 나파모스타트)'을 코로나19(신종 코로나바이러스 감염증) 치료제로 개발한다.종근당은 17일 식품의약품안전처로부터 나파벨탄 임상시험 2상 승인을 받았다고 밝혔다.나파벨탄은 일본 제약사 토리이가 개발한 치료제 나파모스타트의 제네릭(복제약)이다. 앞서 한국파스퇴르연구소는 세포배양 실험을 통해 나파모스타트가 최근 코로나19 치료제로 미국 식품의약국(FDA)의 긴급 승인을 받은 렘데시비르 보다 수백 배 이상의 항바이러스 효능을 보이는 것을 확인했다.나파모스타트는 코로나19 바이러스의 세포 침투 과정에서 주요 역할을 하는 것으로 알려진 단백질 분해효소 'TMPRSS2'를 억제한다. 최근 일본 도쿄대학교 연구팀이 진행한 실험에서도 나파모스타트 항바이러스 효과는 한국파스퇴르연구소와 실험과 유사했다.이에 종근당, 한국파스퇴르연구소, 한국원자력의학원이 함께 나파벨탄 약물재창출 연구를 진행한다. 이번 임상은 한국원자력의학원이 개발한 임상 프로토콜을 활용해 코로나19로 폐렴 확진을 받은 중증환자를 대상으로 진행한다. 종근당은 나파벨탄의 치료 효과가 확인되면 식약처에 코로나19 치료제로 허가를 요청할 계획이다. 이후 코로나19 경증환자 등으로 임상 대상을 확대할 예정이다."
+        // }); // end am4core.ready()
+
+
+        for(var i=0;i<one_list.length;i++){
+            var my_tbody = document.getElementById('my-tbody');
+            var row = my_tbody.insertRow(my_tbody.rows.length); // 하단에 추가
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = one_list[i];
+        }
+
+        var tds = my_tbody.getElementsByTagName("td");
+        for(var i=0;i<one_list.length;i++){
+            tds[i].style.borderBottom="solid";
+            tds[i].style.borderWidth="1px";
+            tds[i].style.paddingTop="3px";
+            tds[i].style.paddingBottom="3px";
+        }
+
+
+        // if (Math.max(atmp, unre, oth) == atmp) document.getElementById("donut-inner-text").innerHTML = "고의성"
+        // else if (Math.max(atmp, unre, oth) == unre) document.getElementById("donut-inner-text").innerHTML = "못하는"
+        // else if (Math.max(atmp, unre, oth) == oth) document.getElementById("donut-inner-text").innerHTML = "미정"
+        // else document.getElementById("donut-inner-text").innerHTML = "데이터가 부족합니다."
+    </script>
+
+    
+</body>
+
+</html>

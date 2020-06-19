@@ -23,6 +23,7 @@ def User(summoner):
 def Search():
    # url: "/test?ID_Search=" + search를 보낸다.
    ID_Search = request.args.get('ID_Search')
+   print(ID_Search)
    headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 #  OP.GG에서 아이디를 받아 오기!
    data = requests.get('https://www.op.gg/summoner/userName='+ID_Search,headers=headers)   

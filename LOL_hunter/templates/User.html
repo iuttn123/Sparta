@@ -16,6 +16,8 @@
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+
 
     <!-- jqeury -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -24,6 +26,7 @@
     <script>
         (op_gg_crawling = function () {
             url_split = window.location.href.split("http://localhost:5000/User/")
+            // url_split = url_split.split(" ");
             $.ajax({
                     type: "GET",
                     url: "/OP.GG_Crawling?User=" + url_split,
@@ -32,7 +35,7 @@
                       img = response['User_Icon']
                       document.getElementById("User_Icon").style.background="url(//opgg-static.akamaized.net/images/profile_icons/profileIcon3233.jpg?image=q_auto&v=1518361200)";
                       document.getElementById("User_Icon").style.backgroundSize= "cover";
-                      
+                      document.getElementById("User_ID").innerHTML="아이디:"+ decodeURIComponent(url_split[1]);
                     }
                 })
         })()
@@ -54,8 +57,22 @@
     <div id="User_Container">
         <div class="Container_Box" id="User_Information">
             <div id="User_Icon" ></div>
+            <div id="User_Career">
+                <div id="User_ID"></div><br>
+                <div id="User_Status">상태:</div><br>
+                <div id="User_Crime">범죄:</div>
+            </div>
+            <input id="Report"type="button" value="신고하기">
         </div>
     </div>
+
+    <div id ="Status_and_Probability">
+        
+
+    </div>
+
+
+
 </body>
 
 </html>

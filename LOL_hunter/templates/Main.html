@@ -28,13 +28,26 @@
 
 <body id="Body">
 
-    <div id="Upper_Head">
-        <a id="Title" herf=""><span>LoL-Hunters</span></a></br>
-        <a href="#" class="Option"> 유저 찾기 </a>
-        <a href="#" class="Option"> 신고하기 </a>
-        <a href="#" class="Option"> 티어별 악질 랭크 </a>
-        <a href="#" class="Option"> 유저 찾기 </a>
-    </div>
+
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#">LoL - Hunters</a><button data-toggle="collapse"
+                data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li role="presentation" class="nav-item"><a class="nav-link active" href="#">First Item</a></li>
+                    <li role="presentation" class="nav-item"><a class="nav-link" href="#">Second Item</a></li>
+                    <li role="presentation" class="nav-item"><a class="nav-link" href="#">Third Item</a></li>
+                    <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false"
+                            class="dropdown-toggle nav-link" href="#">Dropdown </a>
+                        <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item"
+                                href="#">First Item</a><a role="presentation" class="dropdown-item" href="#">Second
+                                Item</a><a role="presentation" class="dropdown-item" href="#">Third Item</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
     <div id="Search">
@@ -52,7 +65,8 @@
                     success: function (response) {
                         if (response['result'] == false) alert("잘못 입력하였거나 없는 소환사 입니다. 다시 한 번 확인해 주세요.")
                         else {
-                            window.open("User/"+response['summoner']);
+                            alert("오픈")
+                            window.open("User/" + response['summoner']);
                         }
                     }
                 })

@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Untitled</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Navigation-Clean.css') }}">
+    <!-- <link rel="stylesheet" href="Navigation-Clean.css" /> -->
+
+    <!-- jqeury -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <!--네비게이션 파트 -->
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container">
+            <a class="navbar-brand" href="#">LOL-Hunters</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
+                            aria-expanded="false" href="#">Dropdown </a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
+                                href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second
+                                Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- 헤더 -->
+    <header class="masthead text-white text-center"
+        style="background:url('https://post-phinf.pstatic.net/MjAxNjEyMTFfMTU2/MDAxNDgxNDYwMzYzMDQ4.tyJfd79L_clDZct5qfNb357pE4jVNB-2EDsfrslZIqkg.arBBAPKIBx2T7QjRI1TD2F1_5Pv9dFruCjCXRki8QjIg.JPEG/Summoners_rift_season_4_map.jpg?type=w1200')no-repeat center center;background-size:cover;">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5">게임을 게임답게 합시다.<br>
+                        고의 트롤러를 박제하고 피합시다.</h1>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                    <div class="form-row">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0">
+                            <input type="search" id="Search_Box" class="form-control form-control-lg"
+                                placeholder="아이디를 입력하세요." />
+                            <script>
+                                function input() {
+                                    var search = document.getElementById("Search_Box").value;
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "/Search?ID_Search=" + search,
+                                        data: {},
+                                        success: function (response) {
+                                            if (response['result'] == false) alert("잘못 입력하였거나 없는 소환사 입니다. 다시 한 번 확인해 주세요.");
+                                            else {
+                                                window.open("User/" + response['summoner']);
+                                            }
+                                        }
+                                    })
+                                }
+                            </script>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <button class="btn btn-primary btn-block btn-lg" type="submit"
+                                onclick="input()">Hunter!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id='chartdiv' style="margin:20 auto; width:500px;  background-color: rgb(167, 174, 177);">
+        <ul style="height: auto;">
+            <li id="li_1">1</li>
+            <li id="li_2">2</li>
+            <li id="li_3">3</li>
+            <li id="li_4">4</li>
+            <li id="li_5">5</li>
+            <li id="li_6">6</li>
+            <li id="li_7">7</li>
+            <li id="li_8">8</li>
+            <li id="li_9">9</li>
+            <li id="li_10">10</li>
+        </ul>
+    </div>
+
+
+
+</body>
+
+
+</html>

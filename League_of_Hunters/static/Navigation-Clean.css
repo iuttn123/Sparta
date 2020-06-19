@@ -1,0 +1,47 @@
+/* 네비게이션  */
+.navigation-clean {
+  
+  background: linear-gradient(0.25turn, #54b5df, #3b5991); 
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  
+}
+
+.mb-5{
+  background: linear-gradient(to right, #ffffff, #0066ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+ul{
+  position: relative;
+  box-sizing: border-box;
+  padding: 10;
+}
+
+ul li{
+  display: flex;
+  background: rgba(255, 255, 255, .1);
+  padding: 10px 20px;
+  color: #fff;
+
+}
