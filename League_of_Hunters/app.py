@@ -1,15 +1,50 @@
 import requests
+import time
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient           # pymongo를 임포트 하기(패키지 인스톨 먼저 해야겠죠?)
 from ast import literal_eval
+from selenium import webdriver
+
 
 app = Flask(__name__)
 
 # Main 화면 route
 @app.route('/')
 def home():
+
+    api_key = 'RGAPI-a8f12a06-99e2-4386-a38f-d830989ee555'
+    sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" +'hide on bush' +'?api_key=' + api_key
+    r = requests.get(sohwan)
+    print(r.json()['id']) #소환사의 고유 id
+    
+
+
+    # op=webdriver.ChromeOptions()
+    # op.add_argument('headless')
+    # driver = webdriver.Chrome('C:/Users/iuttn/OneDrive/바탕 화면/chrome_drive/chromedriver',options=op)
+    # driver.get("https://www.op.gg/")
+    # time.sleep(1)
+    # search=driver.find_element_by_xpath('/html/body/div[2]/div[3]/form/input')
+    # search.send_keys("킹")
+    # time.sleep(1)
+
+    # element=driver.find_element_by_class_name('autocomplete-item--name')
+    # print(element)
     return render_template("Main.html")
+
+# @app.route('/auto_search')
+# def auto():
+#     driver = webdriver.Chrome('chromedriver')
+#     driver.get("https://www.op.gg/")
+#     time.sleep(1)
+#     search=driver.find_element_by_xpath('/html/body/div[2]/div[3]/form/input')
+#     search.send_keys("킹")
+#     element=driver.find_element_by_class_name('autocomplete-item--name')
+#     print(element)
+
+
+
 
 
 # OP.GG를 통해서 Summoner 존재 여부 
@@ -216,11 +251,6 @@ def Doughnut_data():
     for i in range(7):
         real_list.append(final_list[i])
         data_list.append(number_list[i])
-
-
-
-
-
 
     result={'result': 'success','atmp':attempt,'unre':unreason,'oth':ohter,'bar_list':real_list,'bar_list_data':data_list,'oneline_list':oneline_list}
     return jsonify(result)

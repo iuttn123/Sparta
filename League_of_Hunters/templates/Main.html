@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Navigation-Clean.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Main.css') }}">
     <!-- <link rel="stylesheet" href="Navigation-Clean.css" /> -->
 
     <!-- jqeury -->
@@ -27,20 +27,7 @@
     <!--네비게이션 파트 -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean">
         <div class="container">
-            <a class="navbar-brand" href="#">LOL-Hunters</a>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
-                            aria-expanded="false" href="#">Dropdown </a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
-                                href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second
-                                Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                    </li>
-                </ul>
-            </div>
+            <a class="navbar-brand" href="#"><strong style="color: whitesmoke;">LOL-Hunters</strong></a>
         </div>
     </nav>
 
@@ -52,8 +39,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-9 mx-auto">
-                    <h1 class="mb-5">게임을 게임답게 합시다.<br>
-                        고의 트롤러를 박제하고 피합시다.</h1>
+                    <h1 class="mb-5">트롤러들을 신고해주세요!</h1>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
                     <div class="form-row">
@@ -79,7 +65,7 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <button class="btn btn-primary btn-block btn-lg" type="submit"
-                                onclick="input()">Hunter!</button>
+                                onclick="input()">Hunt!</button>
                         </div>
                     </div>
                 </div>
@@ -87,18 +73,13 @@
         </div>
     </header>
 
-    <div id='chartdiv' style="margin:20 auto; width:500px;  background-color: rgb(167, 174, 177);">
+    <div id='chartdiv' style="margin:20 auto; width:350px; " >
         <ul style="height: auto;">
             <li id="li_1">1</li>
             <li id="li_2">2</li>
             <li id="li_3">3</li>
             <li id="li_4">4</li>
             <li id="li_5">5</li>
-            <li id="li_6">6</li>
-            <li id="li_7">7</li>
-            <li id="li_8">8</li>
-            <li id="li_9">9</li>
-            <li id="li_10">10</li>
         </ul>
     </div>
 

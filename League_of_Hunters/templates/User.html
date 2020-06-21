@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cute+Font&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
     <!-- jqeury -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -78,9 +79,10 @@
 
 <body>
     <!--네비게이션 파트 -->
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean"
+        style="background: linear-gradient(0.25turn, #54b5df, #3b5991);">
         <div class="container">
-            <a class="navbar-brand" href="#">LOL-Hunters</a>
+            <a class="navbar-brand" href="#"><strong style="color: whitesmoke;">LOL-Hunters</strong></a>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <input type="search" style="margin-left: 1rem; width: 250px;" placeholder="아이디를 입력하세요." id="Search_Box"
                     onkeyup="input();">
@@ -104,25 +106,25 @@
                         }
                     }
                 </script>
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
-
-                    </li>
-                </ul>
             </div>
         </div>
     </nav>
 
-    <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2" style="padding-top: 5;">
+    <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
         <div class="user_header">
-            <div id="user_icon"></div>
-            <h1 class="user_info" id="user_id"></h1>
-            <br><br>
-            <h3 class="user_info"> 리폿 당한 횟수:</h3>
-            <br><br>
-            <input id="report_btn" type="button" value="리폿취소" onclick="opencloseForm()">
+
+            <div style="position: absolute; left: 50px; top:20px;">
+                <img id="user_icon" style="border-radius: 50%;"></img>
+                <ul>
+                <span class="user_info" id="user_id"
+                        style="color: rgb(119, 119, 119); font-family: 'Noto Sans KR', sans-serif; font-size: 20px;"></span>
+                <span class="user_info"
+                        style="color: rgb(119, 119, 119); font-family: 'Noto Sans KR', sans-serif; font-size: 20px; padding-top: 5px;"> 리폿된
+                        횟수:</span>
+                </ul>
+                <!-- <input id="report_btn" type="button" value="리폿취소" onclick="opencloseForm()"> -->
+                <!-- <input id="opgg_btn" type="button" value="OP.GG" onclick="opgg()"> -->
+            </div>
             <script>
                 function opencloseForm() {
                     let state = document.getElementById("report_catagory").style.display
@@ -135,9 +137,6 @@
                         document.getElementById("report_btn").value = "리폿하기";
                     }
                 }
-            </script>
-            <input id="opgg_btn" type="button" value="OP.GG" onclick="opgg()">
-            <script>
                 function opgg() {
                     url_split = window.location.href.split("http://localhost:5000/User/")
                     window.open("https://www.op.gg/summoner/userName=" + url_split);
@@ -328,7 +327,8 @@
             <canvas id="doughnut" width="400" height="400" style="display: inline;"></canvas>
             <canvas id="bar" width="400" height="400" style="display: inline;"></canvas>
 
-            <div style="display:inline; position: absolute; width: 420px; height: 300px; margin-left: 25px; margin-top: 15px; overflow:auto">
+            <div
+                style="display:inline; position: absolute; width: 420px; height: 300px; margin-left: 25px; margin-top: 15px; overflow:auto">
                 <p style="font-size: 20px; font-family: 'Noto Sans KR', sans-serif; text-align: center; ">한줄평 게시판</p>
                 <table style="width: 100%;">
                     <tr style="border-bottom: double; background-color: rgba(102, 102, 102, 0.13);">
@@ -482,12 +482,12 @@
         //     series.labels.template.tooltipText = "{word}: {value}";
         //     series.fontFamily = "Courier New";
         //     series.maxFontSize = am4core.percent(30);
-        //     series.text="개같다. 근데 너무 개 같은데 참긴함 ㅋㅋ"
-        //     //series.text = "종근당이 한국파스퇴르연구소, 한국원자력의학원과 손잡고 혈액항응고제 및 급성췌장염 치료제 '나파벨탄(성분명 나파모스타트)'을 코로나19(신종 코로나바이러스 감염증) 치료제로 개발한다.종근당은 17일 식품의약품안전처로부터 나파벨탄 임상시험 2상 승인을 받았다고 밝혔다.나파벨탄은 일본 제약사 토리이가 개발한 치료제 나파모스타트의 제네릭(복제약)이다. 앞서 한국파스퇴르연구소는 세포배양 실험을 통해 나파모스타트가 최근 코로나19 치료제로 미국 식품의약국(FDA)의 긴급 승인을 받은 렘데시비르 보다 수백 배 이상의 항바이러스 효능을 보이는 것을 확인했다.나파모스타트는 코로나19 바이러스의 세포 침투 과정에서 주요 역할을 하는 것으로 알려진 단백질 분해효소 'TMPRSS2'를 억제한다. 최근 일본 도쿄대학교 연구팀이 진행한 실험에서도 나파모스타트 항바이러스 효과는 한국파스퇴르연구소와 실험과 유사했다.이에 종근당, 한국파스퇴르연구소, 한국원자력의학원이 함께 나파벨탄 약물재창출 연구를 진행한다. 이번 임상은 한국원자력의학원이 개발한 임상 프로토콜을 활용해 코로나19로 폐렴 확진을 받은 중증환자를 대상으로 진행한다. 종근당은 나파벨탄의 치료 효과가 확인되면 식약처에 코로나19 치료제로 허가를 요청할 계획이다. 이후 코로나19 경증환자 등으로 임상 대상을 확대할 예정이다."
-        // }); // end am4core.ready()
+        //     // series.text="개같다. 근데 너무 개 같은데 참긴함 ㅋㅋ"
+        //     series.text = "종근당이 한국파스퇴르연구소, 한국원자력의학원과 손잡고 혈액항응고제 및 급성췌장염 치료제 '나파벨탄(성분명 나파모스타트)'을 코로나19(신종 코로나바이러스 감염증) 치료제로 개발한다.종근당은 17일 식품의약품안전처로부터 나파벨탄 임상시험 2상 승인을 받았다고 밝혔다.나파벨탄은 일본 제약사 토리이가 개발한 치료제 나파모스타트의 제네릭(복제약)이다. 앞서 한국파스퇴르연구소는 세포배양 실험을 통해 나파모스타트가 최근 코로나19 치료제로 미국 식품의약국(FDA)의 긴급 승인을 받은 렘데시비르 보다 수백 배 이상의 항바이러스 효능을 보이는 것을 확인했다.나파모스타트는 코로나19 바이러스의 세포 침투 과정에서 주요 역할을 하는 것으로 알려진 단백질 분해효소 'TMPRSS2'를 억제한다. 최근 일본 도쿄대학교 연구팀이 진행한 실험에서도 나파모스타트 항바이러스 효과는 한국파스퇴르연구소와 실험과 유사했다.이에 종근당, 한국파스퇴르연구소, 한국원자력의학원이 함께 나파벨탄 약물재창출 연구를 진행한다. 이번 임상은 한국원자력의학원이 개발한 임상 프로토콜을 활용해 코로나19로 폐렴 확진을 받은 중증환자를 대상으로 진행한다. 종근당은 나파벨탄의 치료 효과가 확인되면 식약처에 코로나19 치료제로 허가를 요청할 계획이다. 이후 코로나19 경증환자 등으로 임상 대상을 확대할 예정이다."
+        // }); //end am4core.ready()
 
 
-        for(var i=0;i<one_list.length;i++){
+        for (var i = 0; i < one_list.length; i++) {
             var my_tbody = document.getElementById('my-tbody');
             var row = my_tbody.insertRow(my_tbody.rows.length); // 하단에 추가
             var cell1 = row.insertCell(0);
@@ -495,11 +495,11 @@
         }
 
         var tds = my_tbody.getElementsByTagName("td");
-        for(var i=0;i<one_list.length;i++){
-            tds[i].style.borderBottom="solid";
-            tds[i].style.borderWidth="1px";
-            tds[i].style.paddingTop="3px";
-            tds[i].style.paddingBottom="3px";
+        for (var i = 0; i < one_list.length; i++) {
+            tds[i].style.borderBottom = "solid";
+            tds[i].style.borderWidth = "1px";
+            tds[i].style.paddingTop = "3px";
+            tds[i].style.paddingBottom = "3px";
         }
 
 
@@ -509,7 +509,7 @@
         // else document.getElementById("donut-inner-text").innerHTML = "데이터가 부족합니다."
     </script>
 
-    
+
 </body>
 
 </html>

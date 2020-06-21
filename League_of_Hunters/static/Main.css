@@ -18,15 +18,13 @@
 
 header.masthead {
   position: relative;
-  background-color: #343a40;
-  background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   
 }
 
 .mb-5{
-  background: linear-gradient(to right, #ffffff, #0066ff);
+  background: whitesmoke;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -36,12 +34,37 @@ ul{
   position: relative;
   box-sizing: border-box;
   padding: 10;
+  align-content:flex-start; 
+  flex-direction:column; 
+  flex-wrap:wrap; 
+  overflow:auto;
+  height:250px;
 }
 
 ul li{
   display: flex;
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 132, 132, 0.445);
   padding: 10px 20px;
   color: #fff;
-
+  margin: 5px 0;
+  transition:  .5s;
 }
+
+ul li:hover
+{
+  transform: scale(1.06);
+}
+
+ul li:nth-child(1)
+{
+  background: rgb(255, 132, 132);
+}
+ul li:nth-child(2)
+{
+  background: rgba(255, 132, 132, 0.863);
+}
+ul li:nth-child(3)
+{
+  background: rgba(255, 132, 132, 0.678);
+}
+

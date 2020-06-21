@@ -1,6 +1,9 @@
 .user_header{
-    background-color: rgb(215, 237, 255); 
+    background: linear-gradient(0.25turn, #50a5d286, #3f699f77); 
+    margin-top: 15px;
     overflow:auto;
+    height: 125px;
+
 }
 
 
@@ -8,16 +11,14 @@
     background-image: url(https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png); 
     background-size: cover; 
     background-repeat: no-repeat; 
-    width: 150px; 
-    height: 150px; 
+    width: 85px; 
+    height: 85px; 
     float: left;
 }
 
 .user_info{
     float: left; 
     padding-left: 20px; 
-    padding-top: 10px; 
-    font-size: 25px; 
 }
 
 #user_button{
