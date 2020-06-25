@@ -1,8 +1,7 @@
 .user_header{
-    background: linear-gradient(0.25turn, #50a5d286, #3f699f77); 
-    margin-top: 15px;
+    /* background: linear-gradient(0.25turn, #50a5d286, #3f699f77);  */
     overflow:auto;
-    height: 125px;
+    height: 170px;
 
 }
 
@@ -21,8 +20,72 @@
     padding-left: 20px; 
 }
 
-#user_button{
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  padding: 10px;
+}
+.grid-container > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* text-align: center; */
+  font-size: 10px;
+}
 
+
+.data-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.button {
+  background-color: #ffffff;
+  border: groove;
+  border-color: #7ed6ff;
+  border-radius: 6px;
+  color: #7ed6ff;
+  padding: 4px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.vicious{
+  border-color: #ff8585;
+  color: #ff8585;
+}
+
+.vicious:hover{
+  background-color: #ff8585;
+  color: #ffffff;
+}
+
+.other{
+  border-color: #CFCFCF;
+  color:#CFCFCF;
+}
+.other:hover{
+  border-color: #CFCFCF;
+  color:#ffffff;
+}
+
+input[type=text]{
+  width: 500px;	
+  height: 50px;
+	border-radius: 20px;
+	padding: 10px;
+	font-size: 20px;
+	color: #676767;
+	transition: border 0.5s;
+	-webkit-transition: border 0.5s;
+	-moz-transition: border 0.5s;
+	-o-transition: border 0.5s;
+	border: solid 3px #98d4f3;	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box
 }
 
 #report_btn{
@@ -44,7 +107,7 @@
 }
 
 #opgg_btn{
-    background-color: rgb(56, 106, 212); 
+    background-color: #386ad4; 
     border-radius: 4px;
     margin-left: 10px;
     font-size: 20px;  
@@ -195,3 +258,14 @@
  #abc{
    border-bottom: double;
  }
+
+ 
+footer{
+  color: #fff; background-color: #000; 
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+	padding: 15px 0;
+	text-align: center;
+}

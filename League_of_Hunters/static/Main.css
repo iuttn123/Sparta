@@ -68,3 +68,17 @@ ul li:nth-child(3)
   background: rgba(255, 132, 132, 0.678);
 }
 
+.youtube-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+footer{
+  color: #fff; background-color: #000; 
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+	padding: 15px 0;
+	text-align: center;
+}

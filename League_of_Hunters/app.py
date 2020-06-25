@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient           # pymongo를 임포트 하기(패키지 인스톨 먼저 해야겠죠?)
 from ast import literal_eval
-from selenium import webdriver
 
 
 app = Flask(__name__)
@@ -13,37 +12,8 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 
-    api_key = 'RGAPI-a8f12a06-99e2-4386-a38f-d830989ee555'
-    sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" +'hide on bush' +'?api_key=' + api_key
-    r = requests.get(sohwan)
-    print(r.json()['id']) #소환사의 고유 id
     
-
-
-    # op=webdriver.ChromeOptions()
-    # op.add_argument('headless')
-    # driver = webdriver.Chrome('C:/Users/iuttn/OneDrive/바탕 화면/chrome_drive/chromedriver',options=op)
-    # driver.get("https://www.op.gg/")
-    # time.sleep(1)
-    # search=driver.find_element_by_xpath('/html/body/div[2]/div[3]/form/input')
-    # search.send_keys("킹")
-    # time.sleep(1)
-
-    # element=driver.find_element_by_class_name('autocomplete-item--name')
-    # print(element)
     return render_template("Main.html")
-
-# @app.route('/auto_search')
-# def auto():
-#     driver = webdriver.Chrome('chromedriver')
-#     driver.get("https://www.op.gg/")
-#     time.sleep(1)
-#     search=driver.find_element_by_xpath('/html/body/div[2]/div[3]/form/input')
-#     search.send_keys("킹")
-#     element=driver.find_element_by_class_name('autocomplete-item--name')
-#     print(element)
-
-
 
 
 
@@ -117,9 +87,12 @@ def Data_Inquery():
             'oneline':[]
         }
         db.users.insert(user_data)
+        state='new'
     else:
-        print("잠시")
-    return jsonify({'result': 'success'})
+        state='old'
+
+    print(state)
+    return jsonify({'result': 'success','state':state})
 
 
 
@@ -128,17 +101,13 @@ def Data_Inquery():
 def User_data():
     User = request.args.get('User')
     headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    print("===============================================================")
-    print(User)
-    print("===============================================================")
 #  OP.GG에서 아이디를 받아 오기!
     data = requests.get('https://www.op.gg/summoner/userName='+User,headers=headers)   
 #  BS4를 사용해서 가공시키기
     soup = BeautifulSoup(data.text,'html.parser')
-    image = soup.select('.ProfileImage')
+    image = soup.select('.ProfileImage')    
     print(image[0]['src'])
     return jsonify({'User_Icon': image[0]['src']}) 
-
 
 @app.route('/Report_database',methods=['POST'])
 def Report():
@@ -207,8 +176,11 @@ def Doughnut_data():
     attempt=0
     unreason=0
     ohter=0
+    report=0
 
     for value in all_troll.values():
+        if(a==2):
+            report= value
         if(a>=3 and a<=10):
             attempt += value
         elif(a>=11 and a<=17):
@@ -252,7 +224,7 @@ def Doughnut_data():
         real_list.append(final_list[i])
         data_list.append(number_list[i])
 
-    result={'result': 'success','atmp':attempt,'unre':unreason,'oth':ohter,'bar_list':real_list,'bar_list_data':data_list,'oneline_list':oneline_list}
+    result={'result': 'success', 'report':report,'atmp':attempt,'unre':unreason,'oth':ohter,'bar_list':real_list,'bar_list_data':data_list,'oneline_list':oneline_list}
     return jsonify(result)
 
 if __name__ == '__main__':  
