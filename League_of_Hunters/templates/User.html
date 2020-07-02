@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Untitled</title>
+    <title>롤 헌터스!</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -33,15 +35,15 @@
     <link rel="stylesheet" href="{{url_for('static',filename='User_header.css')}}">
 
     <script>
-        var user_ids = decodeURIComponent(window.location.href.split("http://localhost:5000/User/")[1]);
+        var user_ids = decodeURIComponent(window.location.href.split("http://llht.site/User/")[1]);
         var atmp123;
         var unre;
         var oth;
 
 
         window.onload = function () {
-            url_split = window.location.href.split("http://localhost:5000/User/")
-            alert("zds");
+            url_split = window.location.href.split("http://llht.site/User/")
+
             $.ajax({
                 type: "GET",
                 url: "/OP.GG_Crawling?User=" + url_split,
@@ -58,8 +60,8 @@
                 url: "/data_inquery?User=" + url_split[1],
                 data: {},
                 success: function (response) {
-                    result=response['state']
-                    if(result=='new') window.location.reload();
+                    result = response['state']
+                    if (result == 'new') window.location.reload();
                 }
             })
         }
@@ -84,29 +86,27 @@
     <nav class="navbar navbar-light navbar-expand-md navigation-clean"
         style="background: linear-gradient(0.25turn, #54b5df, #3b5991);">
         <div class="container">
-            <a class="navbar-brand" href="#"><strong style="color: whitesmoke;">LOL-Hunters</strong></a>
+            <a class="navbar-brand" href="http://llht.site/"><strong style="color: whitesmoke;">LOL-Hunters</strong></a>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <input type="search" style="margin-left: 1rem; width: 500px; border-radius: 8px;
-                padding: 4px;" placeholder="아이디를 입력하세요." id="Search_Box"
-                    onkeyup="input();">
-                <input id="Hunter_btn" type="button" value="Hunt" style="margin-left: 5px; padding: 4px 12px;" onclick="input();">
-
+                padding: 4px;" placeholder="아이디를 입력하세요." id="Search_Box">
+                <input id="Hunter_btn" type="button" value="Hunt" style="margin-left: 5px; padding: 4px 12px;"
+                    onclick="input();">
                 <script>
                     function input() {
-                        if (window.event.keyCode == 13) {
-                            var search = document.getElementById("Search_Box").value;
-                            $.ajax({
-                                type: "GET",
-                                url: "/Search?ID_Search=" + search,
-                                data: {},
-                                success: function (response) {
-                                    if (response['result'] == false) alert("잘못 입력하였거나 없는 소환사 입니다. 다시 한 번 확인해 주세요.");
-                                    else {
-                                        window.open(response['summoner']);
-                                    }
+                        var search = document.getElementById("Search_Box").value;
+                        $.ajax({
+                            type: "GET",
+                            url: "/Search?ID_Search=" + search,
+                            data: {},
+                            success: function (response) {
+                                if (response['result'] == false) alert("잘못 입력하였거나 없는 소환사 입니다. 다시 한 번 확인해 주세요.");
+                                else {
+                                    window.open(response['summoner']);
                                 }
-                            })
-                        }
+                            }
+                        })
+
                     }
                 </script>
             </div>
@@ -124,8 +124,9 @@
                     <ul>
                         <span class="user_info" id="user_id"
                             style="font-family: 'Noto Sans KR', sans-serif; font-size: 20px;"></span>
-                        <span id='report_id' class="user_info"style="color: rgb(0, 0, 0); font-family: 'Noto Sans KR', sans-serif; font-size: 20px; padding-top: 5px;">
-                            </span>
+                        <span id='report_id' class="user_info"
+                            style="color: rgb(0, 0, 0); font-family: 'Noto Sans KR', sans-serif; font-size: 20px; padding-top: 5px;">
+                        </span>
                     </ul>
                 </div>
                 <div style="position: absolute; left: 30px; top:110px;">
@@ -145,7 +146,7 @@
                         }
                     }
                     function opgg() {
-                        url_split = window.location.href.split("http://localhost:5000/User/")
+                        url_split = window.location.href.split("http://llht.site/User/")
                         window.open("https://www.op.gg/summoner/userName=" + url_split);
                     }
                 </script>
@@ -339,7 +340,8 @@
         <div class="data-container">
             <canvas id="doughnut" width="400" height="400" style="display: inline;"></canvas>
             <canvas id="bar" width="400" height="400" style="display: inline;"></canvas>
-            <div id="chartdiv" style="width: 300px; height: 300px; position: relative; left: 0.3125px; margin-top: 5px;"></div>
+            <div id="chartdiv"
+                style="width: 300px; height: 300px; position: relative; left: 0.3125px; margin-top: 5px;"></div>
         </div>
     </div>
 
@@ -351,14 +353,14 @@
     </footer>
 
     <script>
-        url_split = window.location.href.split("http://localhost:5000/User/")
+        url_split = window.location.href.split("http://llht.site/User/")
         $.ajax({
             type: "GET",
             url: "/Doughnut_data?User=" + url_split[1],
             data: {},
             async: false,
             success: function (response) {
-                repo= response['report']
+                repo = response['report']
                 atmp = response['atmp']
                 unre = response['unre']
                 oth = response['oth']
@@ -368,8 +370,8 @@
             }
         })
 
-        
-        document.getElementById('report_id').innerHTML="리폿 당한 횟수: "+repo;
+
+        document.getElementById('report_id').innerHTML = "리폿 당한 횟수: " + repo;
 
         var doughnut_data = {
             labels: ["고의성 트롤", "서투른 플레이", "그 외"],
@@ -453,7 +455,7 @@
                     }
                 }]
             },
-            legend:{
+            legend: {
                 display: false
             }
         };
@@ -480,8 +482,6 @@
             am4core.useTheme(am4themes_animated);
             // Themes end
 
-            alert(one_list);
-
             var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud,);
             var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
             series.accuracy = 4;
@@ -492,7 +492,7 @@
             series.labels.template.tooltipText = "{word}: {value}";
             series.fontFamily = "Courier New";
             series.maxFontSize = am4core.percent(30);
-            series.text=" ";
+            series.text = " ";
             for (var i = 0; i < one_list.length; i++) {
                 series.text += one_list[i] + " ";
             }

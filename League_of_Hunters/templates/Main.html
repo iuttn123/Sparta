@@ -3,7 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Untitled</title>
+    <meta property="og:title" content="롤 헌터스!" />
+    <meta property="og:description" content="트롤들아 잘가라 즐롤하자!" />
+    <meta property="og:image" content="{{ url_for('static', filename='logo.png') }}" />
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+
+
+    <title>롤 헌터스!</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -28,7 +35,7 @@
     <!--네비게이션 파트 -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean">
         <div class="container">
-            <a class="navbar-brand" href="#"><strong style="color: whitesmoke;">LOL-Hunters</strong></a>        
+            <a class="navbar-brand" href="#"><strong style="color: whitesmoke;">LOL-Hunters</strong></a>
         </div>
     </nav>
 
@@ -63,6 +70,11 @@
                                     })
                                 }
                             </script>
+                            <script>
+                                if (window.event.keyCode == 13) {
+                                    input()
+                                }
+                            </script>
                         </div>
                         <div class="col-12 col-md-3">
                             <button class="btn btn-primary btn-block btn-lg" type="submit"
@@ -84,7 +96,7 @@
         </ul>
     </div> -->
 
-    
+
     <footer>
         <div class="container text-center">
             <p>Copyright © 스파르타코딩클럽 & 핫 부 2020</p>

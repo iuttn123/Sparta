@@ -11,8 +11,6 @@ app = Flask(__name__)
 # Main 화면 route
 @app.route('/')
 def home():
-
-    
     return render_template("Main.html")
 
 
@@ -49,10 +47,9 @@ def User(summoner):
 
 @app.route('/data_inquery', methods=['GET'])
 def Data_Inquery():
-    
     User = request.args.get('User')
     headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    client = MongoClient('localhost', 27017)
+    client = MongoClient('mongodb://test:test@52.79.33.30', 27017)
     db = client.LOL_hunters
     # db.users.find_one({'user_id': User})
     print(db.users.find_one({'user_id': User}))
@@ -112,7 +109,7 @@ def User_data():
 @app.route('/Report_database',methods=['POST'])
 def Report():
    
-    client = MongoClient('localhost', 27017)
+    client = MongoClient('mongodb://test:test@52.79.33.30', 27017)
     db = client.LOL_hunters
     id = request.form['id']
     check = request.form.getlist('check[]')
@@ -164,7 +161,7 @@ def Report():
 
 @app.route('/Doughnut_data',methods=['GET'])
 def Doughnut_data():
-    client = MongoClient('localhost', 27017)
+    client = MongoClient('mongodb://test:test@52.79.33.30', 27017)
     db = client.LOL_hunters
     User = request.args.get('User')
 
@@ -224,8 +221,11 @@ def Doughnut_data():
         real_list.append(final_list[i])
         data_list.append(number_list[i])
 
+    print(oneline_list)
     result={'result': 'success', 'report':report,'atmp':attempt,'unre':unreason,'oth':ohter,'bar_list':real_list,'bar_list_data':data_list,'oneline_list':oneline_list}
     return jsonify(result)
 
 if __name__ == '__main__':  
-   app.run('localhost',port=5000,debug=True)
+#    app.run('0.0.0.0',port=5000,debug=True)
+
+     app.run('localhost',port=5000,debug=True)  
